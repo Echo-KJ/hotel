@@ -137,10 +137,13 @@ export default function InvoicePage({ params }: { params: Promise<{ id: string }
                 {hotelSettings?.phone && <p>Phone: {hotelSettings.phone}</p>}
                 {hotelSettings?.email && <p>Email: {hotelSettings.email}</p>}
                 {(invoice.hotel_gstin || hotelSettings?.gstin) ? (
-                  <p className="font-semibold mt-1">GSTIN: {invoice.hotel_gstin || hotelSettings.gstin}</p>
-                ) : (
-                  <p className="text-red-600 font-bold mt-1">GSTIN NOT CONFIGURED — Invoice not GST compliant</p>
-                )}
+                  {gstin ? (
+  <p className="font-semibold mt-1">GSTIN: {gstin}</p>
+) : (
+  <p className="text-red-600 font-bold mt-1">
+    GSTIN NOT CONFIGURED — Invoice not GST compliant
+  </p>
+)}
               </div>
             </div>
             <div className="text-right">
@@ -368,4 +371,5 @@ export default function InvoicePage({ params }: { params: Promise<{ id: string }
     </>
   );
 }
+
 
